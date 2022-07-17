@@ -1,0 +1,11 @@
+The Global architecture is microservices oriented.
+I consider the "UdaConnect API" to be the entry point from the frontend.
+The API will be Using 3 services:
+- Person Service which transfers the person data to kafka cluster and postgreSQL
+- Connection Service which transfer the connection data to the postgresSQL
+- Location Service which transfers the person data to kafka cluster and postgreSQL
+
+Since writes are more expensive than writes. Kafka Cluster is mostly used the handle write requests. This will help to scale when the traffic gets really high,
+providing high availability in the write requests.
+
+It's also wise to consider gRPC for (get requests for example), since gRPC are 7-10times faster than RestFul APIs.
