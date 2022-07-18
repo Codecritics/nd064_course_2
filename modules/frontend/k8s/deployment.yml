@@ -15,7 +15,7 @@ spec:
         service: frontend
     spec:
       containers:
-        - image: udaconnect-frontend:latest
+        - image: codecritics/udaconnect-frontend:latest
           name: frontend
           imagePullPolicy: Always
           resources:
