@@ -15,7 +15,7 @@ spec:
         service: location-service
     spec:
       containers:
-        - image: pearlicia/location-service:v1
+        - image: codecritics/location-service:v1
           name: location-service
           imagePullPolicy: Always
       env:
