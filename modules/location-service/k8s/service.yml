@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    service: location-service
+  name: location-service
+spec:
+  ports:
+    - name: "5001"
+      port: 5001
+      targetPort: 5000
+      nodePort: 30016
+  selector:
+    service: location-service
+  type: NodePort

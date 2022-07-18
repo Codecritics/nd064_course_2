@@ -12,16 +12,20 @@ from typing import Optional, List
 
 DATE_FORMAT = "%Y-%m-%d"
 
-api = Namespace("UdaConnect", description="Connections via geolocation.")  # noqa
+api = Namespace("udaconnect-persons", description="Persons of UdaConnect")  # noqa
+
 
 @api.route("/persons")
 class PersonsResource(Resource):
     @accepts(schema=PersonSchema)
     @responds(schema=PersonSchema)
     def post(self) -> Person:
-        payload = request.get_json()
-        new_person: Person = PersonService.create(payload)
-        return new_person
+        try:
+            payload = request.get_json()
+            new_person: Person = PersonService.create(payload)
+            return new_person
+        except Exception as e:
+            return {"error": str(e)}, 400
 
     @responds(schema=PersonSchema, many=True)
     def get(self) -> List[Person]:
