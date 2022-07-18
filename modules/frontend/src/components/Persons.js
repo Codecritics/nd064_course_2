@@ -5,7 +5,6 @@ import Connection from "./Connection";
 class Persons extends Component {
     constructor(props) {
         super(props);
-        // TODO: endpoint should be abstracted into a config variable
         this.endpoint_url = `${config.personServiceURL}/api/persons`
         this.state = {
             persons: [],
