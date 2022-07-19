@@ -6,3 +6,4 @@ def register_routes(api, app, root="api"):
     from app.udaconnect.controllers import api as location_service
 
     api.add_namespace(location_service, path=f"/{root}")
+w
