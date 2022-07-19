@@ -2,21 +2,21 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   labels:
-    service: location_service_grpc
-  name: location_service_grpc
+    service: location-service-grpc
+  name: location-service-grpc
 spec:
   replicas: 1
   selector:
     matchLabels:
-      service: location_service_grpc
+      service: location-service-grpc
   template:
     metadata:
       labels:
-        service: location_service_grpc
+        service: location-service-grpc
     spec:
       containers:
         - image: codecritics/udaconnect-location_service_grpc:latest
-          name: location_service_grpc
+          name: location-service-grpc
           imagePullPolicy: Always
           env:
             - name: DB_USERNAME

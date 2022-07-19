@@ -16,7 +16,7 @@ spec:
         service: connection-service
     spec:
       containers:
-        - image: codecritics/connection-service:latest
+        - image: codecritics/udaconnect-connection_service:latest
           name: connection-service
           imagePullPolicy: Always
           env:
