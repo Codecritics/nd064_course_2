@@ -1,0 +1,247 @@
+---
+openapi: 3.0.0
+info:
+  title: This is the UdaConnect API
+  description: UdaConnect API
+  contact:
+    email: mariustanawa@gmail.com
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+  version: 1.0.0
+servers:
+- url: https://virtserver.swaggerhub.com/MARIUSTANAWA/UdaConnect/1.0.0
+  description: SwaggerHub API Auto Mocking
+tags:
+- name: locations
+  description: Locations of UdaConnect
+- name: persons
+  description: Persons using UdaConnect
+paths:
+  /api/persons:
+    get:
+      tags:
+      - persons
+      summary: Retrieve all the persons using UdaConnect
+      description: |
+        By passing in the appropriate options, you can search for
+        available persons in the system
+      operationId: getPersons
+      responses:
+        "200":
+          description: search results matching criteria
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/PersonItem'
+        "400":
+          description: bad input parameter
+    post:
+      tags:
+      - persons
+      summary: adds a Person in the system
+      description: Create a person in the Database
+      operationId: addPerson
+      requestBody:
+        description: Person informations to add
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PersonItem'
+      responses:
+        "201":
+          description: person created
+        "202":
+          description: person creation on pending
+        "400":
+          description: invalid input, object invalid
+        "409":
+          description: an existing item already exists
+  /api/persons/{personId}:
+    get:
+      tags:
+      - persons
+      summary: returns a person information based on a given Id.
+      parameters:
+      - name: personId
+        in: path
+        description: pass person id to fetch person details
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      responses:
+        "200":
+          description: search results matching criteria
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/PersonItem'
+  /api/persons/{personId}/connections:
+    get:
+      tags:
+      - connections
+      summary: The proximity
+      parameters:
+      - name: personId
+        in: path
+        description: pass the person id to fetch connection detail.
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: distance
+        in: query
+        description: distance in meters
+        required: true
+        style: form
+        explode: true
+        schema:
+          type: string
+      - name: start_date
+        in: query
+        description: smaller input of date range
+        required: true
+        style: form
+        explode: true
+        schema:
+          type: string
+      - name: end_date
+        in: query
+        description: larger input of date range
+        required: true
+        style: form
+        explode: true
+        schema:
+          type: string
+      responses:
+        "200":
+          description: search results matching criteria
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/PersonItem'
+  /api/locations:
+    get:
+      tags:
+      - locations
+      summary: Retrieve all the locations of UdaConnect
+      description: |
+        By passing in the appropriate options, you can search for
+        available persons in the system
+      operationId: getLocations
+      responses:
+        "200":
+          description: search results matching criteria
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/LocationItem'
+        "400":
+          description: bad input parameter
+    post:
+      tags:
+      - locations
+      summary: adds a Location in the system
+      description: Create a Location in the Database
+      operationId: addLocation
+      requestBody:
+        description: Person informations to add
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PersonItem'
+      responses:
+        "201":
+          description: location created
+        "202":
+          description: location creation on pending
+        "400":
+          description: invalid input, object invalid
+        "409":
+          description: an existing location already exists
+  /api/locations/{locationId}:
+    get:
+      tags:
+      - locations
+      summary: returns a location information based on a given Id.
+      parameters:
+      - name: locationId
+        in: path
+        description: pass location id to fetch person details
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      responses:
+        "200":
+          description: search results matching criteria
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/PersonItem'
+components:
+  schemas:
+    PersonItem:
+      required:
+      - creation_time
+      - firstName
+      - id
+      - lastName
+      type: object
+      properties:
+        id:
+          type: integer
+          example: 1
+        firstName:
+          type: string
+          example: Marius
+        lastName:
+          type: string
+          example: Tanawa Tsamo
+        creation_time:
+          type: string
+          format: date-time
+          example: 2016-08-29T09:12:33.001Z
+        updatedAt:
+          type: string
+          format: date-time
+          example: 2016-09-30T09:15:33.001Z
+    LocationItem:
+      required:
+      - creation_time
+      - id
+      - latitude
+      - longitude
+      - personId
+      type: object
+      properties:
+        id:
+          type: integer
+          example: 1
+        latitude:
+          type: string
+          example: "35.058564"
+        longitude:
+          type: string
+          example: "-106.5721845"
+        creation_time:
+          type: string
+          format: date-time
+          example: 2016-08-29T09:12:33.001Z
+        personId:
+          type: integer
+          example: 1

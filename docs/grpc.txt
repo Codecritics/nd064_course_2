@@ -1,0 +1,4 @@
+Inside the location-grpc service
+There is a writer.py file which has the role to creates instances person(s) and location(s) using models.
+There is  getter.py file which has the role to get person(s) and location(s).
+At last the main.py file is the one which saves the location(s) with the  person id inside the database.

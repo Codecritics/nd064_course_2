@@ -1,0 +1,128 @@
+{
+	"info": {
+		"_postman_id": "26382fa0-1549-49e4-b97a-bfb5b11a57a5",
+		"name": "UdaConnect",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "482259"
+	},
+	"item": [
+		{
+			"name": "Get Person",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:30015/api/persons/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "30015",
+					"path": [
+						"api",
+						"persons",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Persons",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:30015/api/persons",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "30015",
+					"path": [
+						"api",
+						"persons"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Locations",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:30018/api/locations",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "30018",
+					"path": [
+						"api",
+						"locations"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Location",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:30018/api/locations/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "30018",
+					"path": [
+						"api",
+						"locations",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Connection",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:30016/api/persons/5/connection?start_date=2022-01-01&end_date=2022-12-31&distance=14",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "30016",
+					"path": [
+						"api",
+						"persons",
+						"5",
+						"connection"
+					],
+					"query": [
+						{
+							"key": "start_date",
+							"value": "2022-01-01"
+						},
+						{
+							"key": "end_date",
+							"value": "2022-12-31"
+						},
+						{
+							"key": "distance",
+							"value": "14"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
