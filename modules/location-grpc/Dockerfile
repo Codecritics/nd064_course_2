@@ -11,4 +11,4 @@ RUN python -m grpc_tools.protoc -I./app/ --python_out=./app/ --grpc_python_out=.
 
 EXPOSE 5005
 
-CMD ["python", "main.py"]
+CMD ["python", "app/main.py"]
