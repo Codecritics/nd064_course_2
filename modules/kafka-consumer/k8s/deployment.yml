@@ -2,21 +2,21 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   labels:
-    service: location_service_grpc
-  name: location_service_grpc
+    service: kafka-service
+  name: kafka-service
 spec:
   replicas: 1
   selector:
     matchLabels:
-      service: location_service_grpc
+      service: kafka-service
   template:
     metadata:
       labels:
-        service: location_service_grpc
+        service: kafka-service
     spec:
       containers:
-        - image: codecritics/udaconnect-location_service_grpc:latest
-          name: location_service_grpc
+        - image: codecritics/udaconnect-location_consumer:latest
+          name: kafka-service
           imagePullPolicy: Always
           env:
             - name: DB_USERNAME
