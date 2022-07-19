@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    service: location_service_grpc
+  name: location_service_grpc
+spec:
+  ports:
+    - name: "5005"
+      port: 5005
+      targetPort: 5005
+      nodePort: 30017
+  selector:
+    service: location_service_grpc
+  type: NodePort
